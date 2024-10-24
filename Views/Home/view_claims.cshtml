@@ -1,0 +1,91 @@
+﻿@model demo_part2.Models.get_claims
+
+@{
+    ViewData["Title"] = "view_claims";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claims Overview</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd; /* Line separating columns */
+        }
+
+        th {
+            background-color: peachpuff;
+            color: white;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        a {
+            color: blue;
+            text-decoration: none;
+        }
+
+          
+    </style>
+</head>
+<body>
+    <h1>Claims Overview</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>User Email</th>
+                <th>Module</th>
+                <th>User ID</th>
+                <th>Hours Worked</th>
+                <th>Hour Rate</th>
+                <th>Note</th>
+                <th>Total Amount</th>
+                <th>Document</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int count = 0; count < Model.email.Count; count++)
+            {
+                <tr>
+                    <td>@Model.email[count]</td>
+                    <td>@Model.module[count]</td>
+                    <td>@Model.id[count]</td>
+                    <td>@Model.hours[count]</td>
+                    <td>@Model.rate[count]</td>
+                    <td>@Model.note[count]</td>
+                    <td>@Model.total[count]</td>
+                    <td><a href="@Url.Content("~/pdf/" + Model.filename[count])" target="_blank">View</a></td>
+                    <td>@Model.status[count]</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>
