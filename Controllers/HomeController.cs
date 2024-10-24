@@ -92,11 +92,11 @@ namespace demo_part2.Controllers
             string message = user.login_user(email, role, password);
             if (message == "found")
             {
-                return RedirectToAction("Dashboard", "Home"); // Adjust this as necessary
+                return RedirectToAction("Dashboard", "Home"); 
             }
             else
             {
-                return View("Login"); // Show the login view again if the credentials are invalid
+                return View("Login"); 
             }
         }
 
@@ -104,8 +104,8 @@ namespace demo_part2.Controllers
         // Program Dashboard
         public IActionResult program_dashboard()
         {
-            // Add any logic needed to retrieve data for the dashboard here
-            return View(); // Ensure you have a view named ProgramDashboard
+            
+            return View(); 
         }
 
         // Submit Claim
@@ -140,12 +140,12 @@ namespace demo_part2.Controllers
             if (message == "done")
             {
                 Console.WriteLine(message);
-                return RedirectToAction("program_dashboard"); // Redirect after successful claim submission
+                return RedirectToAction("program_dashboard"); 
             }
             else
             {
                 Console.WriteLine(message);
-                return RedirectToAction("program_dashboard"); // Redirect to the dashboard regardless of submission result
+                return RedirectToAction("program_dashboard");
             }
         }
 
@@ -180,7 +180,7 @@ namespace demo_part2.Controllers
         }
         public IActionResult Dashboard()
         {
-            return View(); // Make sure you have Dashboard.cshtml in Views/Home
+            return View(); 
         }
 
         // Reject Claim
